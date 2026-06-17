@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
@@ -56,11 +58,11 @@ export const FAQSection = () => {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
               >
                 <span className={`text-lg font-medium transition-colors ${
-                  isOpen ? 'text-blue-400' : 'text-zinc-300 group-hover:text-blue-400'
+                  isOpen ? 'text-stone-200' : 'text-zinc-300 group-hover:text-stone-200'
                 }`}>
                   {faq.question}
                 </span>
-                <span className="ml-4 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-900 text-zinc-500 group-hover:bg-blue-900/30 group-hover:text-blue-400 transition-colors">
+                <span className="ml-4 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-900 text-zinc-500 group-hover:bg-stone-800/30 group-hover:text-stone-200 transition-colors">
                   {isOpen ? (
                     <Minus className="w-4 h-4" />
                   ) : (

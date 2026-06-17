@@ -1,10 +1,8 @@
-// src/components/HeroSection.tsx
 "use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, Variants } from 'motion/react';
 import { Terminal, Code2, Sparkles, ChevronRight } from 'lucide-react';
-import heroBgImage from '../../../assets/images/dark_blue_fluid_hero_1781650553503.jpg';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -25,7 +23,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-[-1] flex items-center justify-center opacity-80 pointer-events-none">
          <Image 
-           src={heroBgImage} 
+           src="/images/hero-bg.webp" 
            alt="Hero Background" 
            fill 
            className="object-contain object-center"
@@ -46,16 +44,16 @@ export function HeroSection() {
         >
         {/* Top badge */}
         <motion.div variants={fadeInUp} className="mb-2">
-          <div className="px-4 py-1.5 text-xs font-semibold tracking-widest text-blue-300 uppercase flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+          <div className="px-4 py-1.5 text-xs font-semibold tracking-widest text-stone-300 uppercase flex items-center gap-2">
+            <Sparkles className="w-3.5 h-3.5 text-stone-200" />
             Introducing Prepl
           </div>
         </motion.div>
         
         {/* Headline */}
-        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white leading-[1.1]">
-          Hire engineers <br />
-          <span className="text-blue-400">while you sleep.</span>
+        <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
+          <span className="text-white">Hire engineers</span> <br />
+          <span className="text-stone-200 text-4xl md:text-5xl">while you sleep.</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -65,19 +63,19 @@ export function HeroSection() {
         
         {/* Dual CTAs */}
         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center mb-8">
-          <motion.div whileTap={{ scale: 0.98 }} className="w-full sm:w-auto bg-gradient-to-b from-blue-800/40 to-transparent p-[4px] rounded-full inline-flex">
-            <Link href="/login" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-blue-600 to-blue-700 shadow-[0_2px_4px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(37,99,235,0.8)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
-              <div className="bg-gradient-to-b from-blue-500 to-blue-600 rounded-full px-5 py-2.5">
+          <motion.div whileTap={{ scale: 0.98 }} className="w-full sm:w-auto bg-gradient-to-b from-white/20 to-transparent p-[4px] rounded-full inline-flex">
+            <Link href="/signup" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-stone-200 to-stone-300 shadow-[0_2px_4px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
+              <div className="bg-gradient-to-b from-stone-100 to-stone-200 rounded-full px-5 py-2.5">
                 <div className="flex gap-2 items-center justify-center">
-                  <span className="font-semibold text-white">Deploy Autonomous Screener</span>
-                  <ChevronRight className="w-4 h-4 text-white" />
+                  <span className="font-semibold text-stone-900">Deploy Autonomous Screener</span>
+                  <ChevronRight className="w-4 h-4 text-stone-900" />
                 </div>
               </div>
             </Link>
           </motion.div>
 
           <motion.div whileTap={{ scale: 0.98 }} className="w-full sm:w-auto bg-gradient-to-b from-zinc-800/40 to-transparent p-[4px] rounded-full inline-flex">
-            <Link href="/login" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
+            <Link href="/login" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(96,165,250,0.2)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
               <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-full px-5 py-2.5">
                 <div className="flex gap-2 items-center justify-center">
                   <span className="font-semibold text-white">Practice for Free</span>
@@ -119,7 +117,7 @@ export function HeroSection() {
                      <div className="space-y-2 font-mono text-sm text-zinc-400">
                         <div className="text-white font-medium">src/</div>
                         <div className="pl-4">components/</div>
-                        <div className="pl-8 text-blue-400 font-medium">App.tsx <span className="text-zinc-600 ml-2 text-xs">● Active</span></div>
+                        <div className="pl-8 text-stone-200 font-medium">App.tsx <span className="text-zinc-600 ml-2 text-xs">● Active</span></div>
                         <div className="pl-8">Button.tsx</div>
                         <div className="pl-4 text-white font-medium">hooks/</div>
                         <div className="pl-4">utils/</div>
@@ -128,13 +126,13 @@ export function HeroSection() {
                   {/* Main Viewer */}
                   <div className="flex-1 flex flex-col relative bg-zinc-900">
                      <div className="p-6 font-mono text-sm text-zinc-400 space-y-4">
-                        <div className="animate-pulse flex items-center gap-2 text-blue-400"><Sparkles className="w-4 h-4"/> Agent analyzing code structure...</div>
+                        <div className="animate-pulse flex items-center gap-2 text-stone-200"><Sparkles className="w-4 h-4"/> Agent analyzing code structure...</div>
                         <div className="text-green-400">▶ Executing tests... [PASS] 42/42</div>
                         <div>Evaluating system design choices...</div>
                         <div className="bg-black border border-zinc-800 p-4 rounded-lg mt-4 text-zinc-300">
-                           <span className="text-blue-400 font-semibold">function</span> optimizeQuery(data: DataLayer[]) {'{'}
-                           <br />&nbsp;&nbsp;<span className="text-zinc-600">// Excellent use of memoization and O(n) traversal.</span>
-                           <br />&nbsp;&nbsp;<span className="text-blue-400 font-semibold">return</span> data.reduce(...)
+                           <span className="text-stone-200 font-semibold">function</span> optimizeQuery(data: DataLayer[]) {'{'}
+                           <br />&nbsp;&nbsp;<span className="text-zinc-600">{"// Excellent use of memoization and O(n) traversal."}</span>
+                           <br />&nbsp;&nbsp;<span className="text-stone-200 font-semibold">return</span> data.reduce(...)
                            <br />{'}'}
                         </div>
                      </div>
@@ -149,15 +147,15 @@ export function HeroSection() {
                                 <div className="text-xs text-zinc-400">Candidate: Alex K. • Confidence Score: 94%</div>
                               </div>
                            </div>
-                           <div className="bg-gradient-to-b from-blue-800/20 to-transparent p-[3px] rounded-xl flex justify-center items-center">
-                             <button className="group p-[3px] rounded-lg bg-gradient-to-b from-blue-600 to-blue-700 shadow-[0_2px_4px_rgba(0,0,0,0.5)] hover:shadow-[0_0_15px_rgba(37,99,235,0.6)] active:shadow-[0_0px_1px_rgba(0,0,0,0.3)] active:scale-[0.995] transition-all duration-300 cursor-pointer">
-                               <div className="bg-gradient-to-b from-blue-500 to-blue-600 rounded-md px-3 py-1.5">
-                                 <div className="flex gap-2 items-center justify-center">
-                                   <span className="text-xs font-bold text-white">Approve</span>
-                                 </div>
-                               </div>
-                             </button>
-                           </div>
+                            <div className="bg-gradient-to-b from-white/10 to-transparent p-[3px] rounded-xl flex justify-center items-center">
+                              <button className="group p-[3px] rounded-lg bg-gradient-to-b from-stone-200 to-stone-300 shadow-[0_2px_4px_rgba(0,0,0,0.5)] hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] active:shadow-[0_0px_1px_rgba(0,0,0,0.3)] active:scale-[0.995] transition-all duration-300 cursor-pointer">
+                                <div className="bg-gradient-to-b from-stone-100 to-stone-200 rounded-md px-3 py-1.5">
+                                  <div className="flex gap-2 items-center justify-center">
+                                    <span className="text-xs font-bold text-stone-900">Approve</span>
+                                  </div>
+                                </div>
+                              </button>
+                            </div>
                         </div>
                      </div>
                   </div>

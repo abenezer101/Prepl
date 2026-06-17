@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { ArrowLeft, Terminal, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <div className="h-screen bg-black flex flex-col lg:flex-row relative overflow-hidden text-white selection:bg-stone-500/50">
       {/* Dark Ambient Layer */}
@@ -30,15 +30,15 @@ export default function SignInPage() {
             <Terminal className="w-7 h-7 text-stone-200" />
           </div>
           <h2 className="text-3xl font-bold tracking-tight leading-[1.1]">
-            Hire engineers <br />
-            <span className="text-stone-300">while you sleep.</span>
+            Screen smarter.<br />
+            <span className="text-stone-300">Hire faster.</span>
           </h2>
           <p className="text-zinc-400 text-base max-w-md leading-relaxed">
-            Prepl deploys autonomous agents to screen candidates in a sandboxed replica of your development environment.
+            Join thousands of engineering leaders who replaced resume screening with autonomous work-sample evaluations.
           </p>
           <div className="flex items-center gap-3 text-sm text-zinc-500">
             <Sparkles className="w-4 h-4 text-stone-300" />
-            <span>Zero-effort screening pipeline</span>
+            <span>Free 14-day trial. No credit card required.</span>
           </div>
         </div>
 
@@ -63,8 +63,8 @@ export default function SignInPage() {
           </Link>
 
           <div className="mb-6">
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1">Welcome back</h1>
-            <p className="text-zinc-400 text-sm sm:text-base">Enter your details to access your workspace.</p>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-1">Create your account</h1>
+            <p className="text-zinc-400 text-sm sm:text-base">Start screening candidates autonomously today.</p>
           </div>
 
           <div className="space-y-4">
@@ -80,13 +80,21 @@ export default function SignInPage() {
 
             <div className="relative flex items-center">
               <div className="flex-grow border-t border-zinc-800"></div>
-              <span className="flex-shrink-0 mx-3 text-zinc-500 text-xs">or sign in with email</span>
+              <span className="flex-shrink-0 mx-3 text-zinc-500 text-xs">or sign up with email</span>
               <div className="flex-grow border-t border-zinc-800"></div>
             </div>
 
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <div className="space-y-1">
-                <label className="text-xs font-medium text-zinc-300">Email</label>
+                <label className="text-xs font-medium text-zinc-300">Full Name</label>
+                <input
+                  type="text"
+                  placeholder="Jane Doe"
+                  className="w-full px-4 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-stone-300/40 focus:border-stone-300 transition-all bg-zinc-900/50 text-white placeholder-zinc-600 text-sm"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-medium text-zinc-300">Work Email</label>
                 <input
                   type="email"
                   placeholder="name@company.com"
@@ -94,34 +102,31 @@ export default function SignInPage() {
                 />
               </div>
               <div className="space-y-1">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium text-zinc-300">Password</label>
-                  <a href="#" className="text-xs text-zinc-500 hover:text-stone-200 transition-colors">Forgot password?</a>
-                </div>
+                <label className="text-xs font-medium text-zinc-300">Password</label>
                 <input
                   type="password"
-                  placeholder="••••••••"
+                  placeholder="Create a strong password"
                   className="w-full px-4 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-stone-300/40 focus:border-stone-300 transition-all bg-zinc-900/50 text-white placeholder-zinc-600 text-sm"
                 />
               </div>
 
               <div className="bg-gradient-to-b from-white/20 to-transparent p-[2px] rounded-xl">
                 <button className="w-full py-3 rounded-xl bg-gradient-to-b from-stone-200 to-stone-300 font-semibold text-stone-900 shadow-[0_3px_6px_rgba(0,0,0,0.35)] hover:shadow-[0_0_20px_rgba(96,165,250,0.3)] transition-all duration-300 active:scale-[0.995] text-sm">
-                  Sign In
+                  Create Account
                 </button>
               </div>
             </form>
           </div>
 
           <p className="mt-4 text-center text-sm text-zinc-500">
-            Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-stone-300 font-medium hover:text-stone-200 transition-colors">
-              Create one
+            Already have an account?{' '}
+            <Link href="/login" className="text-stone-300 font-medium hover:text-stone-200 transition-colors">
+              Sign in
             </Link>
           </p>
 
           <p className="mt-4 text-center text-xs text-zinc-600 leading-relaxed">
-            By continuing, you agree to our{' '}
+            By creating an account, you agree to our{' '}
             <a href="#" className="underline hover:text-zinc-400 transition-colors">Terms of Service</a>{' '}
             and{' '}
             <a href="#" className="underline hover:text-zinc-400 transition-colors">Privacy Policy</a>.

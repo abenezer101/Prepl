@@ -60,9 +60,9 @@ export function FeatureGrid() {
                   <span className="text-zinc-500">styles.css</span>
                 </div>
                 <div className="leading-relaxed">
-                  <div className="text-zinc-400 font-semibold inline">import</div> <span className="text-blue-400">React</span> <div className="text-zinc-400 font-semibold inline">from</div> <span className="text-green-400">&apos;react&apos;</span>;<br/><br/>
-                  <div className="text-blue-400 font-semibold inline">export default function</div> <span className="text-white">App() {'{'}</span><br/>
-                  <span className="pl-4 text-blue-400 font-semibold">return</span> <span className="text-orange-300">{'<div className="sandbox">...</div>'}</span>;<br/>
+                  <div className="text-zinc-400 font-semibold inline">import</div> <span className="text-stone-200">React</span> <div className="text-zinc-400 font-semibold inline">from</div> <span className="text-green-400">&apos;react&apos;</span>;<br/><br/>
+                  <div className="text-stone-200 font-semibold inline">export default function</div> <span className="text-white">App() {'{'}</span><br/>
+                  <span className="pl-4 text-stone-200 font-semibold">return</span> <span className="text-orange-300">{'<div className="sandbox">...</div>'}</span>;<br/>
                   <span className="text-white">{'}'}</span>
                 </div>
               </div>
@@ -89,8 +89,8 @@ export function FeatureGrid() {
                <div className="text-xs text-zinc-300 bg-zinc-800 rounded-lg rounded-tl-none p-3 border border-zinc-700">Analyzing time complexity... Found O(n²), probing for optimization strategy.</div>
              </div>
              <div className="flex items-start gap-3 flex-row-reverse">
-               <div className="w-6 h-6 rounded bg-blue-600 text-white flex-shrink-0 flex items-center justify-center text-[10px] font-bold">DEV</div>
-               <div className="text-xs text-zinc-300 bg-blue-900/30 rounded-lg rounded-tr-none p-3 border border-blue-900">&quot;I&apos;ll refactor using a hash map to bring it down to O(n).&quot;</div>
+               <div className="w-6 h-6 rounded bg-stone-200 text-stone-900 flex-shrink-0 flex items-center justify-center text-[10px] font-bold">DEV</div>
+               <div className="text-xs text-zinc-300 bg-stone-800/30 rounded-lg rounded-tr-none p-3 border border-stone-700">&quot;I&apos;ll refactor using a hash map to bring it down to O(n).&quot;</div>
              </div>
           </div>
         </motion.div>
