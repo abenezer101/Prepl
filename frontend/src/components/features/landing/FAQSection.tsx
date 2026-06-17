@@ -31,10 +31,10 @@ export const FAQSection = () => {
   return (
     <section className="w-full max-w-[800px] mx-auto px-6 font-sans">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
           Frequently asked questions
         </h2>
-        <p className="text-zinc-600 text-lg">
+        <p className="text-zinc-400 text-lg">
           Everything you need to know about the product and billing.
         </p>
       </div>
@@ -47,7 +47,7 @@ export const FAQSection = () => {
             <motion.div 
               key={index}
               initial={false}
-              className={`border-b border-zinc-200 overflow-hidden ${
+              className={`border-b border-zinc-800 overflow-hidden ${
                 isOpen ? 'pb-6' : 'pb-4'
               }`}
             >
@@ -56,11 +56,11 @@ export const FAQSection = () => {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
               >
                 <span className={`text-lg font-medium transition-colors ${
-                  isOpen ? 'text-orange-500' : 'text-zinc-900 group-hover:text-orange-500'
+                  isOpen ? 'text-blue-400' : 'text-zinc-300 group-hover:text-blue-400'
                 }`}>
                   {faq.question}
                 </span>
-                <span className="ml-4 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 text-zinc-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-colors">
+                <span className="ml-4 shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-900 text-zinc-500 group-hover:bg-blue-900/30 group-hover:text-blue-400 transition-colors">
                   {isOpen ? (
                     <Minus className="w-4 h-4" />
                   ) : (
@@ -77,7 +77,7 @@ export const FAQSection = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <div className="pt-2 pr-12 text-zinc-600 leading-relaxed">
+                    <div className="pt-2 pr-12 text-zinc-400 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
