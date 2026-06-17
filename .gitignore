@@ -6,24 +6,34 @@ Prepl Obsidian Vault/
 node_modules/
 jspm_packages/
 web_modules/
-
-# Next.js / React build directories
-.next/
-out/
-build/
-dist/
+#frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+#backend
+backend/.env
+backend/.env.prod
+backend/.env.dev
+backend/.env.test
 
 # Python caching & virtual environments
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.venv/
-venv/
-env/
-ENV/
-pyvenv.cfg
-.python-version
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.venv/
+backend/venv/
+backend/env/
+backend/ENV/
+backend/pyvenv.cfg
+backend/.python-version
 
 # Environment local files
 .env

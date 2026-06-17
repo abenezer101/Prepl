@@ -19,8 +19,14 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-6">
+    <motion.div
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+      className="fixed top-0 left-0 w-full z-50 flex justify-center px-4 md:px-6"
+    >
       <motion.nav
+        initial={false}
         animate={{
           paddingTop: isScrolled ? 8 : 0,
           paddingBottom: isScrolled ? 8 : 14,
@@ -41,20 +47,12 @@ export function Navbar() {
       >
         {/* Logo */}
         <div className="font-bold text-white tracking-tight cursor-pointer shrink-0 flex items-center gap-2">
-          <motion.div
-            animate={{ width: isScrolled ? 30 : 40, height: isScrolled ? 30 : 40 }}
-            transition={navSpring}
-            className="flex items-center justify-center overflow-hidden"
-          >
-            <Image src="/images/square-logo.png" width={50} height={50} alt="logo" />
-          </motion.div>
-          <motion.span
-            animate={{ fontSize: isScrolled ? '1.125rem' : '1.25rem' }}
-            transition={navSpring}
-            className="font-bold tracking-tight"
-          >
+          <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
+            <Image src="/images/square-logo.png" width={32} height={32} alt="logo" />
+          </div>
+          <span className="font-bold tracking-tight text-xl">
             Prepl
-          </motion.span>
+          </span>
         </div>
         
         {/* Links */}
@@ -107,8 +105,8 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex gap-3 items-center shrink-0">
-          <Link href="/login" className="font-medium text-base text-zinc-300 hover:text-white transition-colors cursor-pointer">
-            Log In
+          <Link href="/signin" className="font-medium text-base text-zinc-300 hover:text-white transition-colors cursor-pointer">
+            Sign In
           </Link>
           <div className="bg-gradient-to-b from-stone-400/30 to-transparent p-[4px] rounded-full inline-flex">
             <Link href="/signup" className="group p-[3px] rounded-full bg-gradient-to-b from-stone-400 to-stone-500 shadow-[0_3px_6px_rgba(0,0,0,0.35)] hover:shadow-[0_0_20px_rgba(96,165,250,0.3)] active:shadow-[0_0px_1px_rgba(0,0,0,0.3)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center block">
@@ -123,6 +121,6 @@ export function Navbar() {
           </div>
         </div>
       </motion.nav>
-    </div>
+    </motion.div>
   );
 }

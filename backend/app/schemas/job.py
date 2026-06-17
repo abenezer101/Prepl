@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List
 
 class JobBase(BaseModel):
     title: str = Field(..., description="Job role position title")

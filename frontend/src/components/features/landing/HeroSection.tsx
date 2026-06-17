@@ -21,7 +21,12 @@ export function HeroSection() {
   return (
     <section className="relative w-full pt-2 flex flex-col overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-[-1] flex items-center justify-center opacity-80 pointer-events-none">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 1.8, ease: "easeOut", delay: 0.1 }}
+        className="absolute inset-0 z-[-1] flex items-center justify-center pointer-events-none"
+      >
          <Image 
            src="/images/hero-bg.webp" 
            alt="Hero Background" 
@@ -33,7 +38,7 @@ export function HeroSection() {
          />
          {/* Gradient fade out at bottom */}
          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
-      </div>
+      </motion.div>
 
       <div className="px-6 max-w-[1200px] mx-auto text-center w-full pb-20">
         <motion.div 
@@ -75,7 +80,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div whileTap={{ scale: 0.98 }} className="w-full sm:w-auto bg-gradient-to-b from-zinc-800/40 to-transparent p-[4px] rounded-full inline-flex">
-            <Link href="/login" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(96,165,250,0.2)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
+            <Link href="/signin" className="w-full group p-[4px] rounded-full bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(96,165,250,0.2)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center">
               <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-full px-5 py-2.5">
                 <div className="flex gap-2 items-center justify-center">
                   <span className="font-semibold text-white">Practice for Free</span>

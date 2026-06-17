@@ -1,11 +1,22 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft, Terminal, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function SignInPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('token', 'dev-token');
+    localStorage.setItem('userEmail', email || 'dev@prepl.ai');
+    localStorage.setItem('userName', email.split('@')[0] || 'Dev User');
+    router.push('/dashboard');
+  };
   return (
     <div className="h-screen bg-black flex flex-col lg:flex-row relative overflow-hidden text-white selection:bg-stone-500/50">
       {/* Dark Ambient Layer */}
@@ -84,11 +95,13 @@ export default function SignInPage() {
               <div className="flex-grow border-t border-zinc-800"></div>
             </div>
 
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-3" onSubmit={handleSignIn}>
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-300">Email</label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
                   className="w-full px-4 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-stone-300/40 focus:border-stone-300 transition-all bg-zinc-900/50 text-white placeholder-zinc-600 text-sm"
                 />

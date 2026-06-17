@@ -1,11 +1,23 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft, Terminal, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('token', 'dev-token');
+    localStorage.setItem('userEmail', email || 'dev@prepl.ai');
+    localStorage.setItem('userName', name || email.split('@')[0] || 'Dev User');
+    router.push('/dashboard');
+  };
   return (
     <div className="h-screen bg-black flex flex-col lg:flex-row relative overflow-hidden text-white selection:bg-stone-500/50">
       {/* Dark Ambient Layer */}
@@ -84,11 +96,13 @@ export default function SignUpPage() {
               <div className="flex-grow border-t border-zinc-800"></div>
             </div>
 
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-3" onSubmit={handleSignUp}>
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-300">Full Name</label>
                 <input
                   type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="Jane Doe"
                   className="w-full px-4 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-stone-300/40 focus:border-stone-300 transition-all bg-zinc-900/50 text-white placeholder-zinc-600 text-sm"
                 />
@@ -97,6 +111,8 @@ export default function SignUpPage() {
                 <label className="text-xs font-medium text-zinc-300">Work Email</label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
                   className="w-full px-4 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-stone-300/40 focus:border-stone-300 transition-all bg-zinc-900/50 text-white placeholder-zinc-600 text-sm"
                 />
@@ -120,7 +136,7 @@ export default function SignUpPage() {
 
           <p className="mt-4 text-center text-sm text-zinc-500">
             Already have an account?{' '}
-            <Link href="/login" className="text-stone-300 font-medium hover:text-stone-200 transition-colors">
+            <Link href="/signin" className="text-stone-300 font-medium hover:text-stone-200 transition-colors">
               Sign in
             </Link>
           </p>
