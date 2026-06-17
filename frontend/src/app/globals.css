@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian-deep: #0A0A0E;
+  --color-primary: #adc6ff;
+  --color-primary-fixed: #d8e2ff;
+  --color-on-primary-fixed: #001a41;
+  --color-secondary: #acc7ff;
+  --color-secondary-fixed: #d7e2ff;
+  --color-tertiary: #ffb595;
+  --color-tertiary-fixed: #ffdbcc;
+  --color-surface: #10131b;
+  --color-on-surface: #e0e2ed;
+  --color-on-surface-variant: #c1c6d7;
+  --color-surface-container-lowest: #0b0e16;
+  --color-error: #ffb4ab;
+  --color-outline: #8b90a0;
+
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+}
+
+body {
+  background-color: var(--color-obsidian-deep);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Classes */
+.text-display-lg { font-family: "Hanken Grotesk", sans-serif; font-size: 64px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
+.text-headline-lg { font-family: "Hanken Grotesk", sans-serif; font-size: 40px; line-height: 1.2; letter-spacing: -0.01em; font-weight: 600; }
+.text-headline-md { font-family: "Hanken Grotesk", sans-serif; font-size: 24px; line-height: 1.4; font-weight: 500; }
+.text-body-lg { font-family: "Inter", sans-serif; font-size: 18px; line-height: 1.6; font-weight: 400; }
+.text-body-md { font-family: "Inter", sans-serif; font-size: 16px; line-height: 1.6; font-weight: 400; }
+.text-label-md { font-family: "JetBrains Mono", monospace; font-size: 14px; line-height: 1.2; letter-spacing: 0.05em; font-weight: 500; }
+.text-label-sm { font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.2; font-weight: 500; }
+
+@media (max-width: 768px) {
+  .text-display-lg { font-size: 48px; }
+}
+
+/* Custom Effects */
+.glass-panel {
+  background-color: #14151C;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-panel-floating {
+  background-color: rgba(20, 21, 28, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glow-underlay-cyan {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.15) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(40px);
+}
+.glow-underlay-blue {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.2) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(60px);
+}
