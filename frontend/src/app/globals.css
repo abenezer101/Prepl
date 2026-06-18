@@ -28,6 +28,14 @@
   --color-error: #ffb4ab;
   --color-outline: #8b90a0;
 
+  --color-background: #050505;
+  --color-foreground: #e0e2ed;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #27272a;
+  --color-primary-foreground: #001a41;
+  --color-input: #27272a;
+  --color-ring: #adc6ff;
+
   --spacing-gutter: 24px;
   --spacing-container-max: 1280px;
 }

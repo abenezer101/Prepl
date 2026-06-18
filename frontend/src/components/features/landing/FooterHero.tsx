@@ -38,7 +38,8 @@ const footerLinks = [
 
 export function FooterHero() {
   return (
-    <footer className="w-full border-t border-zinc-900 bg-black relative overflow-hidden mt-16 pt-32 pb-6">
+    <footer className="w-full bg-black relative overflow-hidden mt-16 pt-32 pb-6">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
       <div className="max-w-[800px] mx-auto px-6 text-center relative z-10 mb-32">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -83,8 +84,14 @@ export function FooterHero() {
         </motion.div>
       </div>
 
-      <div className="border-t border-zinc-900">
-        <div className="max-w-[1200px] mx-auto px-2 pt-16 pb-2">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="border-t border-zinc-900"
+      >
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-2 pt-16 pb-2">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 mb-16">
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
@@ -125,15 +132,27 @@ export function FooterHero() {
           ))}
         </div>
         </div>
-      </div>
-      <div className="relative w-full overflow-hidden h-[120px] md:h-[200px] lg:h-[260px] flex items-end justify-center">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative w-full overflow-hidden h-[120px] md:h-[200px] lg:h-[260px] flex items-end justify-center"
+      >
         <span
           className="text-[28vw] font-black tracking-[0.15em] leading-none select-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white/40 to-transparent"
         >
           prepl
         </span>
-      </div>
-      <div className="border-t border-zinc-900">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="border-t border-zinc-900"
+      >
         <div className="max-w-[1200px] mx-auto px-2">
         <div className="flex flex-col md:flex-row justify-between items-center py-6 pb-0 text-sm font-medium text-zinc-500 gap-4">
           <div className="flex flex-wrap items-center gap-6 text-center md:text-left justify-center">
@@ -150,7 +169,7 @@ export function FooterHero() {
           </div>
         </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

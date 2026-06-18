@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion } from 'motion/react';
 
 const navSpring = { type: 'spring', stiffness: 280, damping: 32, mass: 0.8 } as const;
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,16 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith('/#')) {
+      const id = href.slice(2);
+      if (pathname === '/' && id) {
+        e.preventDefault();
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <motion.div
@@ -46,14 +58,14 @@ export function Navbar() {
         className="border w-full flex justify-between items-center"
       >
         {/* Logo */}
-        <div className="font-bold text-white tracking-tight cursor-pointer shrink-0 flex items-center gap-2">
+        <Link href="/" className="font-bold text-white tracking-tight cursor-pointer shrink-0 flex items-center gap-1">
           <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
             <Image src="/images/square-logo.png" width={32} height={32} alt="logo" />
           </div>
           <span className="font-bold tracking-tight text-xl">
             Prepl
           </span>
-        </div>
+        </Link>
         
         {/* Links */}
         <div className="hidden md:flex gap-8 items-center h-full">
@@ -63,7 +75,7 @@ export function Navbar() {
               dropdown: ['AI Screening', 'Real-time Analytics', 'Custom Rubrics', 'Integrations']
             },
             { name: 'How it Works' },
-            { name: 'Pricing' },
+            { name: 'Pricing', href: '/#pricing' },
             { 
               name: 'Resources',
               dropdown: ['Blog', 'Customer Stories', 'Help Center', 'API Docs']
@@ -72,7 +84,8 @@ export function Navbar() {
           ].map((item) => (
             <div key={item.name} className="relative group h-full py-4 -my-4 flex items-center">
               <a
-                href="#"
+                href={item.href || "#"}
+                onClick={(e) => item.href && handleNavClick(e, item.href)}
                 className="font-medium text-sm text-zinc-400 hover:text-white transition-colors duration-200 flex items-center gap-1"
               >
                 {item.name}

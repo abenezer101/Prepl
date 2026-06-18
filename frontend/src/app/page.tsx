@@ -6,6 +6,72 @@ import { SocialProof } from '../components/features/landing/SocialProof';
 import { FAQSection } from '../components/features/landing/FAQSection';
 import { FooterHero } from '../components/features/landing/FooterHero';
 import { Navbar } from '../components/layout/Navbar';
+import { Pricing } from '../components/ui/pricing';
+
+const pricingPlans = [
+  {
+    name: "FREE",
+    price: "0",
+    yearlyPrice: "0",
+    period: "month",
+    features: [
+      "3 mock practice sessions per month",
+      "Full AI interviewer (voice + video)",
+      "Post-session performance report",
+      "Behavioral analysis (MediaPipe)",
+      "Growth recommendations",
+      "Universal accessibility suite",
+      "Session calibration (target role or pasted JD)",
+    ],
+    description: "For anyone preparing for a job interview",
+    buttonText: "Start Free",
+    href: "/signup",
+    isPopular: false,
+    learnMoreHref: "/pricing",
+  },
+  {
+    name: "PREMIUM",
+    price: "19",
+    yearlyPrice: "19",
+    period: "month",
+    features: [
+      "Unlimited mock practice sessions",
+      "Company-specific calibration",
+      "Custom session generation",
+      "Multi-industry practice tracks",
+      "Historical performance tracking",
+      "Cross-session improvement analytics",
+      "Comparison to anonymized benchmarks",
+      "Export reports & priority generation",
+    ],
+    description: "For active job seekers running multi-company searches",
+    buttonText: "Upgrade to Premium",
+    href: "/signup",
+    isPopular: true,
+    learnMoreHref: "/pricing",
+  },
+  {
+    name: "ENTERPRISE",
+    price: "0",
+    yearlyPrice: "0",
+    period: "month",
+    features: [
+      "Everything in Premium",
+      "SSO / SAML authentication",
+      "Dedicated account manager",
+      "Custom integrations & API access",
+      "White-label / branded experience",
+      "Custom evaluation frameworks",
+      "SLA agreement & priority support",
+    ],
+    description: "For large organizations with specific needs",
+    buttonText: "Talk to Sales",
+    href: "/contact",
+    isPopular: false,
+    learnMoreHref: "/pricing",
+    isEnterprise: true,
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Prepl — Hire Engineers While You Sleep',
@@ -31,6 +97,7 @@ export default function Page() {
           <HeroSection />
           <SocialProof />
           <FeatureGrid />
+          <div id="pricing"><Pricing plans={pricingPlans} title="Free to start. Premium to win." description="Three free sessions to prove the value. Upgrade when you are ready to run unlimited interviews." /></div>
           <FAQSection />
           <FooterHero />
         </main>
