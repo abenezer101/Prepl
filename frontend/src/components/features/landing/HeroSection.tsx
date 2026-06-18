@@ -98,8 +98,8 @@ export function HeroSection() {
         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         className="w-full relative max-w-5xl mx-auto z-10"
       >
-         <div className="p-2 sm:p-4 rounded-3xl bg-zinc-900/50 border border-zinc-800 shadow-2xl backdrop-blur-xl">
-            <div className="rounded-2xl overflow-hidden bg-black border border-zinc-800 flex flex-col h-[500px] text-left">
+         <div className="p-2 sm:p-4 rounded-lg bg-zinc-900/50 border border-zinc-800 shadow-2xl backdrop-blur-xl">
+            <div className="rounded-lg overflow-hidden bg-black border border-zinc-800 flex flex-col h-[500px] text-left">
                {/* Header Bar */}
                <div className="h-12 border-b border-zinc-800 bg-zinc-950 flex items-center px-4 justify-between">
                   <div className="flex gap-2">

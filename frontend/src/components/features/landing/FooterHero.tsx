@@ -38,7 +38,7 @@ const footerLinks = [
 
 export function FooterHero() {
   return (
-    <footer className="w-full border-t border-zinc-900 bg-black relative overflow-hidden mt-16 pt-32 pb-12">
+    <footer className="w-full border-t border-zinc-900 bg-black relative overflow-hidden mt-16 pt-32 pb-6">
       <div className="max-w-[800px] mx-auto px-6 text-center relative z-10 mb-32">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,8 @@ export function FooterHero() {
         </motion.div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 border-t border-zinc-900 pt-16 pb-8">
+      <div className="border-t border-zinc-900">
+        <div className="max-w-[1200px] mx-auto px-2 pt-16 pb-2">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 mb-16">
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
@@ -123,10 +124,20 @@ export function FooterHero() {
             </div>
           ))}
         </div>
-
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-zinc-900 text-sm font-medium text-zinc-500 gap-4">
+        </div>
+      </div>
+      <div className="relative w-full overflow-hidden h-[120px] md:h-[200px] lg:h-[260px] flex items-end justify-center">
+        <span
+          className="text-[28vw] font-black tracking-[0.15em] leading-none select-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white/40 to-transparent"
+        >
+          prepl
+        </span>
+      </div>
+      <div className="border-t border-zinc-900">
+        <div className="max-w-[1200px] mx-auto px-2">
+        <div className="flex flex-col md:flex-row justify-between items-center py-6 pb-0 text-sm font-medium text-zinc-500 gap-4">
           <div className="flex flex-wrap items-center gap-6 text-center md:text-left justify-center">
-            <span>© 2026 Prepl Inc. All rights reserved.</span>
+            <span>© 2026 Prepl Inc. </span>
             <span className="hidden md:inline text-zinc-700">|</span>
             <span className="flex items-center gap-1.5 hover:text-stone-200 cursor-pointer transition-colors">
                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -136,8 +147,8 @@ export function FooterHero() {
           <div className="flex gap-6">
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Security</Link>
           </div>
+        </div>
         </div>
       </div>
     </footer>

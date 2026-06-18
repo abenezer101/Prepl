@@ -83,15 +83,15 @@ export function Navbar() {
                 )}
               </a>
               
-              {/* Dropdown Menu - Glassmorphic background */}
+              {/* Dropdown Menu */}
               {item.dropdown && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <div className="bg-zinc-950/75 backdrop-blur-xl rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.55)] border border-zinc-800/60 py-2 w-48 overflow-hidden">
+                  <div className="rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-zinc-700/50 py-2 w-48 bg-[#1c1c1f]">
                     {item.dropdown.map((subItem) => (
-                      <a 
-                        key={subItem} 
-                        href="#" 
-                        className="block px-4 py-2.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/40 transition-colors"
+                      <a
+                        key={subItem}
+                        href="#"
+                        className="block px-4 py-2.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-700/40 transition-colors"
                       >
                         {subItem}
                       </a>
