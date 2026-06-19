@@ -100,15 +100,21 @@ export function Navbar() {
               {item.dropdown && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
                   <div className="rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-zinc-700/50 py-2 w-48 bg-[#1c1c1f]">
-                    {item.dropdown.map((subItem) => (
-                      <a
-                        key={subItem}
-                        href="#"
-                        className="block px-4 py-2.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-700/40 transition-colors"
-                      >
-                        {subItem}
-                      </a>
-                    ))}
+                    {item.dropdown.map((subItem) => {
+                      const dropdownHrefs: Record<string, string> = {
+                        'Blog': '/blog',
+                      };
+                      const href = dropdownHrefs[subItem] || '#';
+                      return (
+                        <Link
+                          key={subItem}
+                          href={href}
+                          className="block px-4 py-2.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-700/40 transition-colors"
+                        >
+                          {subItem}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}
