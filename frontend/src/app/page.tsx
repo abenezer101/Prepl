@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { HeroSection } from '../components/features/landing/HeroSection';
 import { FeatureGrid } from '../components/features/landing/FeatureGrid';
+import { FeatureCards } from '../components/features/landing/FeatureCards';
 import { SocialProof } from '../components/features/landing/SocialProof';
 import { FAQSection } from '../components/features/landing/FAQSection';
 import { FooterHero } from '../components/features/landing/FooterHero';
@@ -96,6 +97,7 @@ export default function Page() {
         <main className="w-full relative z-10 pt-24 pb-0 flex flex-col gap-24 md:gap-32">
           <HeroSection />
           <SocialProof />
+          <FeatureCards />
           <FeatureGrid />
           <div id="pricing"><Pricing plans={pricingPlans} title="Free to start. Premium to win." description="Three free sessions to prove the value. Upgrade when you are ready to run unlimited interviews." /></div>
           <FAQSection />

@@ -36,10 +36,11 @@ const footerLinks = [
   }
 ];
 
-export function FooterHero() {
+export function FooterHero({ hideCta }: { hideCta?: boolean }) {
   return (
-    <footer className="w-full bg-black relative overflow-hidden mt-16 pt-32 pb-6">
+    <footer className="w-full bg-black relative overflow-hidden mt-16 pb-6">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+      {!hideCta && (
       <div className="max-w-[800px] mx-auto px-6 text-center relative z-10 mb-32">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -83,6 +84,7 @@ export function FooterHero() {
           </div>
         </motion.div>
       </div>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
