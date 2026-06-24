@@ -46,21 +46,24 @@ export function Navbar() {
           paddingRight: isScrolled ? 24 : 0,
           maxWidth: isScrolled ? 1150 : 1200,
           borderRadius: isScrolled ? 999 : 0,
-          backgroundColor: isScrolled ? 'rgba(24,24,27,0.65)' : 'rgba(0,0,0,0)',
-          borderColor: isScrolled ? 'rgba(63,63,70,0.5)' : 'rgba(0,0,0,0)',
+          borderColor: isScrolled ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0)',
           boxShadow: isScrolled
-            ? '0 8px 32px rgba(0,0,0,0.45)'
+            ? '0 8px 32px rgba(0,0,0,0.04)'
             : '0 0px 0px rgba(0,0,0,0)',
           marginTop: isScrolled ? 24 : 16,
         }}
         transition={navSpring}
-        style={{ backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)' }}
+        style={{
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          backgroundColor: 'rgba(251,248,243,0.4)',
+        }}
         className="border w-full flex justify-between items-center"
       >
         {/* Logo */}
-        <Link href="/" className="font-bold text-white tracking-tight cursor-pointer shrink-0 flex items-center gap-1">
+        <Link href="/" className="font-bold text-zinc-900 tracking-tight cursor-pointer shrink-0 flex items-center gap-1">
           <div className="w-8 h-8 flex items-center justify-center overflow-hidden">
-            <Image src="/images/square-logo.png" width={32} height={32} alt="logo" />
+            <Image src="/images/square-logo.png" width={32} height={32} alt="logo" style={{ width: 'auto', height: 'auto' }} />
           </div>
           <span className="font-bold tracking-tight text-xl">
             Prepl
@@ -70,71 +73,35 @@ export function Navbar() {
         {/* Links */}
         <div className="hidden md:flex gap-8 items-center h-full">
           {[
-            { 
-              name: 'Features',
-              dropdown: ['AI Screening', 'Real-time Analytics', 'Custom Rubrics', 'Integrations']
-            },
-            { name: 'How it Works' },
-            { name: 'Pricing', href: '/#pricing' },
-            { 
-              name: 'Resources',
-              dropdown: ['Blog', 'Customer Stories', 'Help Center', 'API Docs']
-            },
-            { name: 'FAQ' }
+            { name: 'How it Works', href: '/howitworks' },
+            { name: 'Pricing', href: '/pricing' },
+            { name: 'Blog', href: '/blog' },
+            { name: 'Contact', href: '/contact' }
           ].map((item) => (
             <div key={item.name} className="relative group h-full py-4 -my-4 flex items-center">
-              <a
-                href={item.href || "#"}
-                onClick={(e) => item.href && handleNavClick(e, item.href)}
-                className="font-medium text-sm text-zinc-400 hover:text-white transition-colors duration-200 flex items-center gap-1"
+              <Link
+                href={item.href}
+                className="font-medium text-sm text-zinc-600 hover:text-zinc-900 transition-colors duration-200"
               >
                 {item.name}
-                {item.dropdown && (
-                  <svg className="w-3.5 h-3.5 mt-0.5 opacity-50 group-hover:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                )}
-              </a>
-              
-              {/* Dropdown Menu */}
-              {item.dropdown && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <div className="rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.45)] border border-zinc-700/50 py-2 w-48 bg-[#1c1c1f]">
-                    {item.dropdown.map((subItem) => {
-                      const dropdownHrefs: Record<string, string> = {
-                        'Blog': '/blog',
-                      };
-                      const href = dropdownHrefs[subItem] || '#';
-                      return (
-                        <Link
-                          key={subItem}
-                          href={href}
-                          className="block px-4 py-2.5 text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-700/40 transition-colors"
-                        >
-                          {subItem}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
+              </Link>
             </div>
           ))}
         </div>
 
         {/* Actions */}
         <div className="flex gap-3 items-center shrink-0">
-          <Link href="/signin" className="font-medium text-base text-zinc-300 hover:text-white transition-colors cursor-pointer">
+          <Link href="/signin" className="font-medium text-base text-zinc-600 hover:text-zinc-900 transition-colors cursor-pointer">
             Sign In
           </Link>
-          <div className="bg-gradient-to-b from-stone-400/30 to-transparent p-[4px] rounded-full inline-flex">
-            <Link href="/signup" className="group p-[3px] rounded-full bg-gradient-to-b from-stone-400 to-stone-500 shadow-[0_3px_6px_rgba(0,0,0,0.35)] hover:shadow-[0_0_20px_rgba(96,165,250,0.3)] active:shadow-[0_0px_1px_rgba(0,0,0,0.3)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center block">
+          <div className="bg-gradient-to-b from-zinc-300/40 to-transparent p-[3px] rounded-full inline-flex">
+            <Link href="/signup" className="group p-[2px] rounded-full bg-gradient-to-b from-zinc-300 to-zinc-400 shadow-[0_2px_6px_rgba(0,0,0,0.06)] hover:shadow-[0_0_16px_rgba(96,165,250,0.12)] active:shadow-[0_0px_1px_rgba(0,0,0,0.06)] active:scale-[0.995] transition-all duration-300 cursor-pointer text-center block">
               <motion.div
                 animate={{ paddingLeft: isScrolled ? 14 : 18, paddingRight: isScrolled ? 14 : 18, paddingTop: isScrolled ? 5 : 7, paddingBottom: isScrolled ? 5 : 7 }}
                 transition={navSpring}
-                className="bg-gradient-to-b from-stone-50 to-stone-200 rounded-full flex gap-2 items-center justify-center"
+                className="bg-gradient-to-b from-white to-zinc-100 rounded-full flex gap-2 items-center justify-center"
               >
-                <span className="font-semibold text-stone-900 text-sm leading-none">Sign Up</span>
+                <span className="font-semibold text-zinc-900 text-sm leading-none">Sign Up</span>
               </motion.div>
             </Link>
           </div>

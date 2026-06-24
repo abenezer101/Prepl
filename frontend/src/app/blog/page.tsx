@@ -4,7 +4,7 @@ import { BlogPageClient } from "./BlogPageClient";
 export const metadata: Metadata = {
   title: "Blog | Prepl",
   description:
-    "Explore insights on autonomous hiring, AI-driven technical screening, and building high-performance engineering teams.",
+    "Explore the latest insights on mock interview preparation, AI-driven feedback, and career growth.",
 };
 
 export default function BlogPage() {

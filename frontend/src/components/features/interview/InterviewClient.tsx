@@ -222,12 +222,12 @@ export default function InterviewClient() {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 flex items-center justify-center overflow-hidden">
-                <Image src="/images/square-logo.png" width={24} height={24} alt="logo" />
+                <Image src="/images/square-logo.png" width={24} height={24} alt="logo" style={{ width: 'auto', height: 'auto' }} />
               </div>
               <span className="text-lg font-bold tracking-tight text-white">Prepl</span>
             </div>
             <div className="h-4 w-px bg-zinc-800"></div>
-            <span className="text-zinc-400 text-xs font-bold tracking-wider uppercase">Autonomous Interview Sandbox</span>
+            <span className="text-zinc-400 text-xs font-bold tracking-wider uppercase">AI Mock Interview Session</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
@@ -251,7 +251,7 @@ export default function InterviewClient() {
               className="flex items-center gap-2 text-zinc-500 hover:text-rose-400 transition-colors border border-transparent hover:border-rose-500/10 rounded-xl px-3 py-1.5 hover:bg-rose-500/5 cursor-pointer font-bold uppercase tracking-wider text-xs"
             >
               <PhoneOff className="w-4 h-4" />
-              <span>End Screener</span>
+              <span>End Session</span>
             </button>
           </div>
         </header>
@@ -262,7 +262,7 @@ export default function InterviewClient() {
           <section className="flex-1 relative rounded-2xl overflow-hidden bg-zinc-900/40 border border-zinc-800/80 shadow-2xl group flex items-center justify-center">
             <div className="absolute top-4 left-4 z-10 px-3 py-1.5 bg-zinc-950/80 backdrop-blur-md rounded-lg border border-zinc-800 flex items-center gap-2 font-bold uppercase tracking-wider text-[10px] text-zinc-400">
               <User className="w-3.5 h-3.5 text-blue-400" />
-              <span>Candidate Feed</span>
+              <span>My Video Feed</span>
             </div>
 
             <div className="h-full w-full flex items-center justify-center bg-zinc-950/20">
@@ -279,7 +279,7 @@ export default function InterviewClient() {
           <section className="flex-1 relative rounded-2xl overflow-hidden bg-zinc-900/40 border border-zinc-800/80 shadow-2xl flex flex-col items-center justify-center">
             <div className="absolute top-4 left-4 z-10 px-3 py-1.5 bg-zinc-950/80 backdrop-blur-md rounded-lg border border-zinc-800 flex items-center gap-2 font-bold uppercase tracking-wider text-[10px] text-zinc-400">
               <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              <span>{agentDisplayName} (Agent)</span>
+              <span>{agentDisplayName} (AI Coach)</span>
             </div>
 
             <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center relative z-[1]">
@@ -289,7 +289,7 @@ export default function InterviewClient() {
                 <h3 className="text-xl font-bold text-white mb-2">{agentDisplayName}</h3>
                 <div className="h-0.5 w-8 bg-blue-500 mx-auto mb-3 rounded-full"></div>
                 <p className="text-zinc-500 text-xs font-bold uppercase tracking-wider leading-relaxed">
-                  Autonomous Evaluator
+                  AI Interview Coach
                 </p>
               </div>
             </div>

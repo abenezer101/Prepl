@@ -25,17 +25,17 @@ function FeatureCard({ title, description, icon, gradient, delay }: FeatureCardP
         style={{ background: gradient, filter: "blur(45px)" }}
       />
       <div
-        className="relative self-stretch h-[260px] md:h-[300px] rounded-[40px] z-10 overflow-hidden"
+        className="relative self-stretch h-[260px] md:h-[300px] rounded-[40px] z-10 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-zinc-200/50"
         style={{
-          background: `linear-gradient(#1A1A1C, #1A1A1C) padding-box, ${gradient} border-box`,
+          background: `linear-gradient(#ffffff, #ffffff) padding-box, ${gradient} border-box`,
           border: "8px solid transparent",
         }}
       >
         <div className="w-full h-full p-7 flex flex-col justify-between">
-          <div className="text-white/90">{icon}</div>
+          <div className="text-zinc-800">{icon}</div>
           <div>
-            <h3 className="text-white font-medium text-xl mb-3 tracking-tight">{title}</h3>
-            <p className="text-gray-400 text-[14px] leading-[1.6] font-normal selection:bg-white/20">
+            <h3 className="text-zinc-900 font-semibold text-xl mb-3 tracking-tight">{title}</h3>
+            <p className="text-zinc-600 text-[14px] leading-[1.6] font-normal selection:bg-black/10">
               {description}
             </p>
           </div>
@@ -74,7 +74,7 @@ const cards = [
 
 export function FeatureCards() {
   return (
-    <section className="bg-[#0A0A0B] flex flex-col items-center justify-center px-6 md:px-12 py-16 md:py-24 font-sans">
+    <section className="bg-[#fbf8f3] flex flex-col items-center justify-center px-6 md:px-12 py-16 md:py-24 font-sans">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-3 lg:gap-3 w-full max-w-[936px]">
         {cards.map((card) => (
           <FeatureCard key={card.title} {...card} />

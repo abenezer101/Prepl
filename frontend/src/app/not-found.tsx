@@ -4,45 +4,50 @@ import { FooterHero } from "@/components/features/landing/FooterHero";
 
 export default function NotFound() {
   return (
-    <div className="bg-black">
-      <div className="relative min-h-screen flex flex-col">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260613_180732_a54afbf6-b30d-470e-861f-669871f09f67.mp4"
+    <div className="font-sans min-h-screen bg-[#fbf8f3] text-zinc-900 relative overflow-x-hidden selection:bg-stone-300/40">
+      {/* Light Ambient Background Layer */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[#fbf8f3]">
+        {/* Grain Noise Overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.02] mix-blend-multiply"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')" }}
         />
-
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <Navbar />
-
-          <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 sm:pt-28 pb-12 sm:pb-16">
-            <h1 className="text-white/80 text-lg xs:text-2xl sm:text-3xl md:text-5xl font-light leading-snug tracking-tight mb-1 sm:mb-2">
-              This page seems to have
-            </h1>
-            <h1 className="text-white/80 text-lg xs:text-2xl sm:text-3xl md:text-5xl font-light leading-snug tracking-tight mb-8 sm:mb-12">
-              slipped beyond our reach :/
-            </h1>
-
-            <div className="relative mb-8 sm:mb-12 w-full flex justify-center overflow-visible">
-              <span className="four-oh-four text-[80px] xs:text-[100px] sm:text-[140px] md:text-[200px] lg:text-[260px] font-black text-white leading-none tracking-tighter select-none">
-                404
-              </span>
-            </div>
-
-            <Link
-              href="/"
-              className="liquid-glass text-white text-[10px] xs:text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em] font-medium px-6 sm:px-8 py-3 sm:py-3.5 rounded-full uppercase inline-block transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
-            >
-              Return to Main Page
-            </Link>
-          </div>
-        </div>
+        {/* Ambient Subtle Glows */}
+        <div className="absolute top-[20%] left-[20%] w-[300px] h-[300px] bg-gradient-to-r from-zinc-200/40 to-transparent rounded-full filter blur-[80px]" />
+        <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-gradient-to-r from-amber-100/30 to-transparent rounded-full filter blur-[100px]" />
       </div>
 
-      <FooterHero hideCta />
+      <div className="relative z-10 min-h-screen flex flex-col justify-between">
+        <Navbar />
+
+        <main className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-32 pb-20">
+          <span className="font-mono text-[10px] font-bold text-zinc-400 uppercase tracking-wider bg-white border border-zinc-200/60 px-3 py-1 rounded-full mb-6">
+            Error 404
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-950 mb-6 leading-tight max-w-2xl">
+            This page slipped beyond our reach
+          </h1>
+          <p className="text-zinc-500 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-12 font-normal">
+            The path you are looking for has either moved or doesn't exist. Let's get you back on track.
+          </p>
+
+          <div className="relative mb-12 w-full flex justify-center">
+            <span className="text-[120px] xs:text-[150px] sm:text-[180px] md:text-[220px] font-black text-zinc-900/5 leading-none tracking-tighter select-none font-sansplomb">
+              404
+            </span>
+          </div>
+
+          <div className="bg-gradient-to-b from-zinc-300/40 to-transparent p-[3px] rounded-full inline-flex">
+            <Link href="/" className="group p-[2px] rounded-full bg-gradient-to-b from-zinc-300 to-zinc-400 shadow-[0_2px_6px_rgba(0,0,0,0.06)] hover:shadow-[0_0_16px_rgba(96,165,250,0.12)] active:shadow-[0_0px_1px_rgba(0,0,0,0.06)] active:scale-[0.995] transition-all duration-300 cursor-pointer">
+              <div className="bg-gradient-to-b from-white to-zinc-100 rounded-full flex gap-2 items-center justify-center px-8 py-3">
+                <span className="font-semibold text-zinc-900 leading-none">Return to Main Page</span>
+              </div>
+            </Link>
+          </div>
+        </main>
+
+        <FooterHero hideCta />
+      </div>
     </div>
   );
 }

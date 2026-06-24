@@ -45,7 +45,7 @@ export function Pricing({
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-20">
+    <div className="mx-auto max-w-7xl px-6 pt-20 pb-6">
       <div className="text-center space-y-4 mb-12">
         <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-foreground">
           {title}
@@ -66,7 +66,7 @@ export function Pricing({
             />
           </Label>
         </label>
-        <span className="ml-2 font-semibold text-zinc-300">
+        <span className="ml-2 font-semibold text-zinc-700">
           Annual billing <span className="text-primary">(Save 20%)</span>
         </span>
       </div>
@@ -163,7 +163,7 @@ export function Pricing({
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-left text-zinc-300">{feature}</span>
+                    <span className="text-left text-zinc-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -190,7 +190,7 @@ export function Pricing({
               {plan.learnMoreHref && (
                 <Link
                   href={plan.learnMoreHref}
-                  className="mt-3 inline-flex items-center justify-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="mt-3 inline-flex items-center justify-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-800 transition-colors"
                 >
                   Learn more
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

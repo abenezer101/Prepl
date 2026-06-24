@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Autonomous Technical Screening | Prepl",
-  description: "Replace manual technical screens with autonomous AI agents. Prepl runs candidates through high-fidelity, sandboxed work samples before you ever see a resume.",
-  keywords: "AI technical screening, autonomous recruitment platform, work-sample testing, HR agent for startups",
+  title: "Prepl — AI Interview Coach | Practice, Improve, Get Hired",
+  description: "Prepl is an AI-native interview coaching platform. Calibrate mock interviews to any job description, practice speaking with an AI interviewer, and receive real-time behavioral and technical feedback.",
+  keywords: "AI interview prep, mock interviews, career coaching, speech analysis, behavioral feedback, job interview practice",
 };
 
 export default function RootLayout({
