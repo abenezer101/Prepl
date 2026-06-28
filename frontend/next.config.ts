@@ -30,6 +30,20 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
+
+  /* --- Redirects --- */
+  async redirects() {
+    if (process.env.NODE_ENV === 'production') {
+      return [
+        {
+          source: '/dashboard',
+          destination: 'https://get.prepl.me',
+          permanent: false,
+        },
+      ];
+    }
+    return [];
+  },
 };
 
 export default nextConfig;
