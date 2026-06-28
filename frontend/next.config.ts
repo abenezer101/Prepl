@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
     if (process.env.NODE_ENV === 'production') {
       return [
         {
-          source: '/dashboard',
+          source: '/:path*',
           destination: 'https://get.prepl.me',
           permanent: false,
         },
