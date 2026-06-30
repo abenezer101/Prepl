@@ -7,7 +7,10 @@ import {
   Settings,
   LogOut,
   ChevronDown,
+  CreditCard,
+  Accessibility,
 } from 'lucide-react';
+import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
 
 export default function Header() {
@@ -68,16 +71,34 @@ export default function Header() {
               </div>
               <div className="h-px bg-zinc-100" />
               <div className="p-1.5 space-y-0.5">
-                <button
+                <Link
+                  href="/dashboard/settings"
                   onClick={() => setIsProfileOpen(false)}
-                  className="w-full text-left px-3 py-2.5 text-sm text-zinc-600 hover:text-zinc-900 rounded-md hover:bg-zinc-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
+                  className="w-full text-left px-3 py-2 text-sm text-zinc-600 hover:text-zinc-900 rounded-md hover:bg-zinc-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
                 >
                   <Settings className="w-4 h-4 text-zinc-400" />
                   Settings
-                </button>
+                </Link>
+                <Link
+                  href="/dashboard/billing"
+                  onClick={() => setIsProfileOpen(false)}
+                  className="w-full text-left px-3 py-2 text-sm text-zinc-600 hover:text-zinc-900 rounded-md hover:bg-zinc-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
+                >
+                  <CreditCard className="w-4 h-4 text-zinc-400" />
+                  Billing
+                </Link>
+                <Link
+                  href="/dashboard/accessibility"
+                  onClick={() => setIsProfileOpen(false)}
+                  className="w-full text-left px-3 py-2 text-sm text-zinc-600 hover:text-zinc-900 rounded-md hover:bg-zinc-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
+                >
+                  <Accessibility className="w-4 h-4 text-zinc-400" />
+                  Accessibility Hub
+                </Link>
+                <div className="h-px bg-zinc-100 my-1" />
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-3 py-2.5 text-sm text-zinc-500 hover:text-rose-500 rounded-md hover:bg-rose-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
+                  className="w-full text-left px-3 py-2 text-sm text-zinc-500 hover:text-rose-500 rounded-md hover:bg-rose-50 transition-colors flex items-center gap-2 font-medium cursor-pointer"
                 >
                   <LogOut className="w-4 h-4" />
                   Log out

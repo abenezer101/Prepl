@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import {
   ChevronRight,
   Activity,
@@ -104,9 +105,9 @@ export default function StatsGrid({ interviews }: StatsGridProps) {
           <p className="text-zinc-500 text-xs leading-relaxed font-medium mb-3.5">
             Get instant feedback on your tone, pace, and response structure. Compare your metrics to see how you improve over time.
           </p>
-          <button className="w-full py-2.5 border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-700 hover:text-zinc-900 text-xs font-bold rounded-lg transition-all cursor-pointer">
+          <Link href="/dashboard/telemetry" className="block w-full py-2.5 border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-700 hover:text-zinc-900 text-xs font-bold rounded-lg transition-all text-center cursor-pointer">
             View Progress Metrics
-          </button>
+          </Link>
         </div>
       </div>
     </div>

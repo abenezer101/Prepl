@@ -1,11 +1,15 @@
+import { supabase, getAccessToken } from '@/lib/supabase';
+
 const BASE_URL = typeof window !== 'undefined'
   ? (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1')
   : 'http://localhost:8000/api/v1';
 
+// ── Types ────────────────────────────────────────────────────────────────────
+
 export interface User {
   email: string;
   name?: string;
-  surname?: string;
+  id?: string;
 }
 
 export interface Interview {
@@ -27,14 +31,17 @@ export interface Interview {
   }>;
 }
 
+// ── Core request helper ───────────────────────────────────────────────────────
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  // Always use the Supabase access token — never the old fake localStorage token
+  const accessToken = await getAccessToken();
   const fullUrl = `${BASE_URL}${path}`;
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': 'true',
-    ...(token ? { Authorization: `Token ${token}` } : {}),
+    ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
     ...(options.headers as Record<string, string> || {}),
   };
 
@@ -58,12 +65,23 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
   console.log(`Response status: ${res.status} ${res.statusText}`);
 
+  // 401 = expired/invalid token — sign out and redirect
+  if (res.status === 401) {
+    console.warn('⚠️ 401 Unauthorized — signing out');
+    console.groupEnd();
+    await supabase.auth.signOut();
+    if (typeof window !== 'undefined') {
+      window.location.href = '/signin';
+    }
+    throw new Error('Session expired. Please sign in again.');
+  }
+
   if (res.status === 204) {
     console.groupEnd();
     return null as T;
   }
 
-  let data: any;
+  let data: unknown;
   try {
     data = await res.json();
   } catch (parseErr) {
@@ -76,10 +94,11 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   console.groupEnd();
 
   if (!res.ok) {
+    const errData = data as Record<string, unknown>;
     const message =
-      data?.detail ||
-      data?.non_field_errors?.[0] ||
-      (Object.values(data as Record<string, unknown[]>)?.[0] as unknown[])?.[0] as string ||
+      (errData?.detail as string) ||
+      ((errData?.non_field_errors as string[])?.[0]) ||
+      ((Object.values(errData)?.[0] as string[])?.[0]) ||
       'Something went wrong';
     throw new Error(message);
   }
@@ -87,45 +106,52 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   return data as T;
 }
 
-/* --- Authentication API --- */
+// ── Authentication ────────────────────────────────────────────────────────────
+
+export async function getMe(): Promise<User> {
+  return request<User>('/auth/me');
+}
+
+// ── Sessions API ──────────────────────────────────────────────────────────────
+
+export interface CreateSessionParams {
+  job_description?: string | null;
+  session_type: 'star_conversational' | 'behavioral_deep_dive';
+}
+
+export interface CreateSessionResponse {
+  session_id: string;
+  livekit_token: string;
+  livekit_url: string;
+  room_name: string;
+}
+
+export async function createSession(params: CreateSessionParams): Promise<CreateSessionResponse> {
+  return request<CreateSessionResponse>('/sessions/create', {
+    method: 'POST',
+    body: JSON.stringify(params),
+  });
+}
+
+export async function completeSession(sessionId: string): Promise<void> {
+  return request<void>(`/sessions/${sessionId}/complete`, { method: 'POST' });
+}
+
+// ── Legacy Interview API (kept for backward compat during migration) ──────────
 
 export interface LoginResponse {
   token: string;
   user?: User;
 }
 
-export async function login({ email, password }: Record<string, string>): Promise<LoginResponse> {
-  return request<LoginResponse>('/auth/login/', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-  });
-}
-
-export async function logout(): Promise<null> {
-  return request<null>('/auth/logout/', { method: 'POST' });
-}
-
-export async function register({ email, password, name, surname }: Record<string, string>): Promise<any> {
-  return request<any>('/auth/register/', {
-    method: 'POST',
-    body: JSON.stringify({ email, password, name, surname }),
-  });
-}
-
-export async function getMe(): Promise<User> {
-  return request<User>('/auth/me/', { method: 'GET' });
-}
-
-/* --- Interviews API --- */
-
-export async function listInterviews(): Promise<Interview[]> {
-  return request<Interview[]>('/interviews/', { method: 'GET' });
-}
-
 export interface CreateInterviewParams {
   agent_id: number;
   job_description?: string | null;
   number_of_questions?: number;
+}
+
+export async function listInterviews(): Promise<Interview[]> {
+  return request<Interview[]>('/interviews/', { method: 'GET' });
 }
 
 export async function createInterview({ agent_id, job_description, number_of_questions }: CreateInterviewParams): Promise<Interview> {
@@ -139,10 +165,10 @@ export async function getInterview(id: string): Promise<Interview> {
   return request<Interview>(`/interviews/${id}/`, { method: 'GET' });
 }
 
-export async function startInterview(id: string): Promise<any> {
-  return request<any>(`/interviews/${id}/start/`, { method: 'POST' });
+export async function startInterview(id: string): Promise<unknown> {
+  return request<unknown>(`/interviews/${id}/start/`, { method: 'POST' });
 }
 
-export async function completeInterview(id: string): Promise<any> {
-  return request<any>(`/interviews/${id}/complete/`, { method: 'POST' });
+export async function completeInterview(id: string): Promise<unknown> {
+  return request<unknown>(`/interviews/${id}/complete/`, { method: 'POST' });
 }
